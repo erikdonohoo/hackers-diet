@@ -13,6 +13,7 @@ sites:
     -
         map: hackersdiet.local
         to: /home/vagrant/code/public
+        php: "7.1"
 databases:
     - homestead
 name: server
