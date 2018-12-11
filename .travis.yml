@@ -1,0 +1,20 @@
+language: php
+
+php:
+  - '7.1'
+
+services:
+  - mysql
+
+before_script:
+    - cd server/
+    - cp .env.testing .env
+    - mysql -e 'create database hackersdiet_test;'
+    - composer self-update
+    - composer install --no-interaction
+    - php artisan migrate:install
+    - php artisan migrate:refresh --seed
+
+script:
+  - cd server/
+  - composer test --env=testing
